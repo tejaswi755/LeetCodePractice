@@ -3,21 +3,22 @@ public:
     
 
     int fib(int n) {
-        vector<int>ans(n+1,-1);
-        
+       
         if(n==0){
             return 0;
         }
-       ans[0]=0;
-        ans[1]=1;
+       int prev1=0;
+        int prev2=1;
         
         
         
         for(int i=2;i<=n;i++){
-            ans[i]=ans[i-1]+ans[i-2];
+                int ans=prev1+prev2;
+            prev1=prev2;
+            prev2=ans;
         }
         
-        return ans[n];
+        return prev2;
         
     }
 };
