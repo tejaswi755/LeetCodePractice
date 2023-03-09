@@ -1,1 +1,1 @@
-​
+one approach is to use 2 maps to stroe all the rows and column that need to made 0 and after that made all of them 0
