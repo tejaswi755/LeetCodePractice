@@ -1,22 +1,23 @@
 class Solution {
 public:
     
-    int fab(int n,vector<int>&ans){
-        if(n==1||n==0){
-            return n;
-        }
-        if(ans[n]!=-1){
-            return ans[n];
-        }
-        
-        ans[n]=fab(n-1,ans)+fab(n-2,ans);
-        return ans[n];
-        
-    }
+
     int fib(int n) {
         vector<int>ans(n+1,-1);
         
-        return fab(n,ans);
+        if(n==0){
+            return 0;
+        }
+       ans[0]=0;
+        ans[1]=1;
+        
+        
+        
+        for(int i=2;i<=n;i++){
+            ans[i]=ans[i-1]+ans[i-2];
+        }
+        
+        return ans[n];
         
     }
 };
