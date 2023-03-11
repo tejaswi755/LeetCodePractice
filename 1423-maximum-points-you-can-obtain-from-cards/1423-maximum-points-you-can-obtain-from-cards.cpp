@@ -18,7 +18,7 @@ public:
         int i=window;
         while(i<n){
             ws=ws+cardPoints[i]-cardPoints[i-window];
-            cout<<ws;
+            //cout<<ws;
             ans=max(ans,sum-ws);
             i++;
         }
