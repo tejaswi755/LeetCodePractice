@@ -8,28 +8,42 @@ class Solution{
 	public:
 	long long t=1e9+7;
 	int solve(int arr[],int n,int sum,vector<vector<int>>&v){
-	    if(sum==0){
-	        return 1;
+	    
+	     if(n<=0){
+	         if(sum==0){
+	             return 1;
+	         }else{
+	             return 0;
+	         }
 	    }
-	    if(n==0&&sum!=0){
+
+	    if(sum==0){
+	        int ans=1;
+	        for(int i=n;i>=1;i--){
+	            ans=ans+solve(arr,i-1,sum-arr[i-1],v);
+	        }
+	        return ans;
+	    }
+	    if(sum<0){
 	        return 0;
 	    }
+	   
 	    if(v[n][sum]!=-1){
 	        return v[n][sum];
 	    }
 	    
-	    if(arr[n-1]<=sum){
+	   
 	        int l1=solve(arr,n-1,sum-arr[n-1],v)%(int)t;
 	        int l2=solve(arr,n-1,sum,v)%(int)t;
 	        return   v[n][sum]=(l1+l2)%(int)t;
-	    }else{
-	         return v[n][sum]=solve(arr,n-1,sum,v);
-	    }
+	
+	     
 	    //return solve(arr,n-1,sum);
 	}
 	int perfectSum(int arr[], int n, int sum)
 	{
-	    sort(arr,arr+n,greater<int>());
+	   // sort(arr,arr+n,greater<int>());
+	  // reverse(arr,arr+n);
 	    vector<vector<int>>v(n+1,vector<int>(sum+1,-1));
         // Your code goes here
         return solve(arr,n,sum,v);
